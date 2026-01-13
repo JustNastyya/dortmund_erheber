@@ -2,6 +2,7 @@
 
 
 #Library installieren 
+install.packages("tidyverse", dependencies = TRUE)
 library(tidyverse)
 
 #Reinladen der Umfrage ins global Enviorment
@@ -52,10 +53,10 @@ material.data <- material.data %>%
     Material = str_remove(Material, "_Num")
   )
 
-#Jetzt werten wir die Daten aus 
-#Wir sortieren nach Leuten mit intensiver Nutzung (Score >= 4) 
-#Nehmen deren Zufriedenheitswerte und errechnen daraus einen Durchschnitt
-#Dann vergleichen wir diese 
+# Jetzt werten wir die Daten aus 
+# Wir sortieren nach Leuten mit intensiver Nutzung (Score >= 4) 
+# Nehmen deren Zufriedenheitswerte und errechnen daraus einen Durchschnitt
+# Dann vergleichen wir diese 
 satisfaction.analysis <- material.data %>%
   
   #Filtern nach leuten die das Material häufig nutzen

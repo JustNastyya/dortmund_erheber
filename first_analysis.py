@@ -7,64 +7,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-likert_colors = {
-    1: "#d73027",  # strong disagree
-    2: "#fc8d59",
-    3: "#fee08b",
-    4: "#91bfdb",
-    5: "#4575b4"   # strong agree
-}
-
-def sort_by_agreement(df, variables):
-    agreement = (
-        df[variables]
-        .apply(lambda x: (x >= 4).mean())
-        .sort_values()
-        .index
-    )
-    return list(agreement)
-
-
-def likert_stacked_bar(df, variables, title, filename):
-    # count responses
-    counts = (
-        df[variables]
-        .apply(lambda x: x.value_counts(normalize=True))
-        .T
-        .fillna(0)
-    )
-
-    # ensure full 1–5 scale exists
-    counts = counts.reindex(columns=[1, 2, 3, 4, 5], fill_value=0)
-
-    # plot
-    fig, ax = plt.subplots(figsize=(8, 0.6 * len(variables)))
-
-    left = np.zeros(len(counts))
-
-    for value in counts.columns:
-        ax.barh(
-            counts.index,
-            counts[value],
-            left=left,
-            color=likert_colors[value],
-            label=str(value)
-        )
-        left += counts[value].values
-
-    ax.set_title(title)
-    ax.set_xlabel("Share of responses")
-    ax.set_xlim(0, 1)
-
-    ax.legend(
-        title="Response",
-        bbox_to_anchor=(1.05, 1),
-        loc="upper left"
-    )
-
-    plt.tight_layout()
-    if filename:
-        plt.savefig(filename, format="pdf", bbox_inches="tight")
 
 df_raw = pd.read_csv("results_survey_bear.csv")
 
@@ -90,28 +32,68 @@ desc[['mean', 'std', 'min', '25%', '50%', '75%', 'max']]
 
 # boxplots
 
-learning_materials_group_sorted = sort_by_agreement(df, learning_materials_group)
-likert_stacked_bar(
-    df,
-    learning_materials_group_sorted,
-    "Usage of Learning Materials",
-    filename="graphs/learning_materials_group_sorted.pdf"
-)
+# now lets do some demogr analysis
 
-materials_that_i_use_sorted = sort_by_agreement(df, materials_that_i_use)
-likert_stacked_bar(
-    df,
-    materials_that_i_use_sorted,
-    "Perceived Usage of Learning Materials",
-    filename="graphs/materials_that_i_use_sorted.pdf"
-)
+# by that are ment variables:
+demog = [
+    "faculty",
+    "faculty_other",
+    "edu_level",
+    "semester_n"
+]
 
-allgemein_sorted = sort_by_agreement(df, allgemein)
-likert_stacked_bar(
-    df,
-    allgemein_sorted,
-    "Generall",
-    filename="graphs/allgemein_sorted.pdf"
-)
+df["faculty"]
+df["faculty_other"]
 
-# idea: like a floating plot from learning_materials_group to materials_that_i_use
+df["edu_level"]
+
+df["semester_n"]
+
+
+# ##################### demographics
+
+
+import matplotlib.pyplot as plt
+
+faculty_combined = df["faculty"].copy()
+mask = faculty_combined == "Sonstiges"
+faculty_combined[mask] = df.loc[mask, "faculty_other"]
+
+faculty_counts = faculty_combined.value_counts()
+
+plt.figure(figsize=(10, 6))
+
+plt.bar(faculty_counts.index, faculty_counts.values)
+plt.title("Faculty Distribution")
+plt.ylabel("Count")
+plt.xticks(rotation=45, ha="right")
+
+plt.tight_layout()
+plt.savefig("faculty_distribution.pdf")
+plt.close()
+
+edu_counts = df["edu_level"].value_counts().sort_index()
+semester_data = df["semester_n"].dropna()
+
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# --- Education level (bar plot)
+axes[0].bar(edu_counts.index, edu_counts.values)
+axes[0].set_title("Education Level")
+axes[0].set_ylabel("Count")
+axes[0].set_xlabel("Level")
+
+# --- Semester number (histogram)
+axes[1].hist(
+    semester_data,
+    bins=range(1, int(semester_data.max()) + 2),
+    edgecolor="black"
+)
+axes[1].set_title("Semester Number")
+axes[1].set_xlabel("Semester")
+axes[1].set_ylabel("Count")
+
+plt.tight_layout()
+plt.savefig("education_and_semester.pdf")
+plt.close()

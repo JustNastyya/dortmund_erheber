@@ -87,3 +87,6 @@ materials_learning_stress       2.851852  1.130388  1.0  2.00  3.0  4.0   5.0
 materials_timewaste             3.468354  1.072206  1.0  3.00  4.0  4.0   5.0
 materials_safety_exam           3.262500  0.990381  1.0  3.00  3.0  4.0   5.0
 ```
+
+
+edu_level_other is also completely nan!!!!
