@@ -1,6 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from utils import materials_that_i_use, learning_materials_group, umnennen_heatmap
+import numpy as np
+import textwrap
+
+def wrap_labels(labels, width=25):
+    return ["\n".join(textwrap.wrap(label, width)) for label in labels]
+
 
 df = pd.read_csv("results_survey_bear.csv")
 
@@ -43,3 +50,56 @@ for col in korr_hoch.columns:
         korr_hoch = korr_hoch.drop(columns=col, index=col)
 
 korr_hoch.columns
+
+
+# lets see a heatmap only for variables of learning_materials_group and materials_that_i_use
+vars_to_correlate = learning_materials_group.copy()
+vars_to_correlate.extend(materials_that_i_use)
+
+threshold = 0.4
+
+corr = df[vars_to_correlate].corr()
+
+# Bool-Matrix: starke Korrelationen (Diagonale ignorieren)
+strong_corr = corr.abs() >= threshold
+np.fill_diagonal(strong_corr.values, False)
+
+# Variablen behalten, die mindestens eine starke Korrelation haben
+vars_keep = strong_corr.any(axis=1)
+
+corr_filtered = corr.loc[vars_keep, vars_keep]
+
+corr_filtered = corr_filtered.where(corr_filtered.abs() >= threshold)
+corr_filtered = corr_filtered.rename(
+    index=umnennen_heatmap,
+    columns=umnennen_heatmap
+)
+corr_filtered.index = wrap_labels(corr_filtered.index, width=28)
+corr_filtered.columns = wrap_labels(corr_filtered.columns, width=28)
+
+plt.figure(figsize=(22, 22))
+
+ax = sns.heatmap(
+    corr_filtered,
+    annot=True,
+    cmap="coolwarm",
+    fmt=".2f",
+    linewidths=0.3,
+    square=True,
+    vmin=-1,
+    vmax=1,
+    center=0,
+    annot_kws={"size": 22}   # 🔹 Zahlen größer
+)
+ax.tick_params(
+    axis="both",
+    which="major",
+    labelsize=23
+)
+
+plt.xticks(rotation=45, ha="right")
+plt.yticks(rotation=0)
+
+
+plt.savefig("heatmap_only_big_only_materials.pdf", bbox_inches="tight")
+plt.show()

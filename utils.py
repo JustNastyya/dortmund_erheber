@@ -139,6 +139,30 @@ umnennen_allgemein = {
     "effective_learning": "Effizientes Lernen in der Prüfungsvorbereitung ist mir wichtig.",
 }
 
+umnennen_heatmap = {
+    "kurzscript_usage": "Nutzung: Kurzskript",
+    "fullscript_usage": "Nutzung: Vollständiges Skript",
+    "notes_usage": "Nutzung: Mitschriften",
+    "videos_lecture_usage": "Nutzung: Videoaufzeichnungen der Vorlesung",
+    "uebeung_sols_usage": "Nutzung: Übungsaufgaben mit Musterlösung",
+    "books_usage": "Nutzung: Bücher",
+    "old_exams_usage": "Nutzung: Altklausuren",
+    "videos_online_usage": "Nutzung: Online-Videos",
+    "ai_usage": "Nutzung: KI-Chatbots",
+    "material_understanding": "Materialien: fördern Verstehen",
+    "materials_orga": "Materialien: klar strukturiert",
+    "materials_complicated": "Materialien: nicht kompliziert",
+    "materials_ontime": "Materialien: rechtzeitig",
+    "materials_workload": "Materialien: erhöhen die Arbeitsbelastung",
+    "materials_help": "Materialien: erleichtern das Lernprozess",
+    "materials_safety": "Materialien: geben Sicherheit",
+    "materials_motivation": "Materialien: steigern die Motivation",
+    "materials_independent_learning": "Materialien: selbstständiges Lernen",
+    "materials_learning_stress": "Materialien: reduzieren das Prüfungsstress",
+    "materials_timewaste": "Materialien: erhöhen das Zeitaufwand",
+    "materials_safety_exam": "Materialien: geben mir Sicherheit",
+}
+
 
 FACULTY_MAP = {
     # Informatik / IT

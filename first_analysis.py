@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils import numeric_vars, learning_materials_group, materials_that_i_use, allgemein, demog, faculty_generation, umnennen_materials
+from utils import numeric_vars, learning_materials_group, materials_that_i_use, allgemein, demog, faculty_generation, umnennen_materials, umnennen_heatmap
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
