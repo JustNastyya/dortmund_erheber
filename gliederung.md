@@ -11,7 +11,7 @@ Titelblatt
  I Inhaltsverzeichnis
  1 VakatseiteI
 
-1. Einleitung (= Motivation, Forschungsfrage(n), ca. 1/2 Seite)
+1. Einleitung (= Motivation, Forschungsfrage(n), ca. 1/2 Seite) (elaha!)
 
 Lernerfolg -> schwierig
 materialien dafür -> wichtig
@@ -21,7 +21,7 @@ dafür haben wir einen online fragebogen erstellt, menschen befragt/ausgewertet,
 was ist in diesem bericht zu lesen... bla bla
 
 2. Erhebungsinstrument (= Überblick Fragebogen, ca. 1 Seite
-(zu zweit) oder 1.5 Seiten (zu dritt))
+(zu zweit) oder 1.5 Seiten (zu dritt)) (furkan!)
 
 konkret warum fragebogen
 Konkret warum genau diese fragen
@@ -32,7 +32,7 @@ hier datenschutz erwähnen! (yay)
 das platform womit de rfragebogen erstellt wurde
 
 3. Stichprobe und Datensatz (= Erhebung, Stichprobe,
-erhobene Variablen inkl. Skalenniveaus, ca. 1 Seite)
+erhobene Variablen inkl. Skalenniveaus, ca. 1 Seite) (elaha!)
 
 in welcher Form wir den Datensatz bekommen haben -> datensatz womit wir im eneffekt arbeiten
 
@@ -49,16 +49,16 @@ Seiten (zu zweit), ca. 5 Seiten (zu dritt))
 
 bevor: kurze beschreibung den von verwendetetn Software (R oder python) + bibliotheken
 
-- quasi demografie
+- quasi demografie (furkan!)
 hier die verteilung von Semster, Studiengängen etc (2 abbildungen + beschreibung mit wörtert was man alle ssieht)
 
-- Hauptfragestellung
+- Hauptfragestellung (ana!)
 Abbildung von wegen: das finden Studierende hilfreich + beschreibung
 
-- explorative: ka was auch immer wir finden
+- explorative (ana!): ka was auch immer wir finden
 
 
-5. Diskussion (= Einordnung/Interpretation der Ergebnisse in
+5. Diskussion (ana + elaha!) (= Einordnung/Interpretation der Ergebnisse in
 Relation zu Forschungsfragen, Limitationen, ca. 1 Seite (zu
 zweit) oder 1.5 Seiten (zu dritt))
 
@@ -68,7 +68,7 @@ zweit) oder 1.5 Seiten (zu dritt))
 
 6. Reflexion der fragebogengestützten Erhebung (= Was
 müsste bei Fragebogen bzw. Erhebung rückblickend anders
-gemacht werden? ca. 1 Seite)
+gemacht werden? ca. 1 Seite) (furkan!)
 
 - wir haben 1nen beschissenen job gemacht weil...
 verzerrrungen/komische reinigung, nicht alles darstellbar usw
