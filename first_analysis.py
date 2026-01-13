@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils import numeric_vars, learning_materials_group, materials_that_i_use, allgemein, demog
+from utils import numeric_vars, learning_materials_group, materials_that_i_use, allgemein, demog, faculty_generation
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -9,6 +9,7 @@ import numpy as np
 
 
 df_raw = pd.read_csv("results_survey_bear.csv")
+# df_raw = pd.read_csv("results-survey_cleaned.csv")
 
 df_raw = df_raw.drop(columns="Unnamed: 0")
 df_raw.columns
@@ -55,17 +56,14 @@ df["semester_n"]
 
 import matplotlib.pyplot as plt
 
-faculty_combined = df["faculty"].copy()
-mask = faculty_combined == "Sonstiges"
-faculty_combined[mask] = df.loc[mask, "faculty_other"]
-
-faculty_counts = faculty_combined.value_counts()
+df = faculty_generation(df)
+faculty_counts = df["faculty_clean"].value_counts()
 
 plt.figure(figsize=(10, 6))
 
 plt.bar(faculty_counts.index, faculty_counts.values)
-plt.title("Faculty Distribution")
-plt.ylabel("Count")
+plt.title("Verteilung der Fakultäten")
+plt.ylabel("Anzahl")
 plt.xticks(rotation=45, ha="right")
 
 plt.tight_layout()
@@ -79,21 +77,42 @@ semester_data = df["semester_n"].dropna()
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
 # --- Education level (bar plot)
-axes[0].bar(edu_counts.index, edu_counts.values)
-axes[0].set_title("Education Level")
-axes[0].set_ylabel("Count")
-axes[0].set_xlabel("Level")
+# --- Education level (bar plot)
+# --- Bildungsabschluss (Balkendiagramm)
+axes[0].bar(
+    edu_counts.index,
+    edu_counts.values,
+    edgecolor="black",
+    linewidth=0.8
+)
 
-# --- Semester number (histogram)
+axes[0].set_title("Bildungsabschluss", fontsize=12, pad=10)
+axes[0].set_xlabel("Abschluss", fontsize=10)
+axes[0].set_ylabel("Anzahl", fontsize=10)
+
+axes[0].tick_params(axis="x")
+axes[0].grid(axis="y", linestyle="--", alpha=0.6)
+axes[0].set_axisbelow(True)
+
+
+# --- Semesterzahl (Histogramm)
+bins = range(1, int(semester_data.max()) + 2)
+
 axes[1].hist(
     semester_data,
-    bins=range(1, int(semester_data.max()) + 2),
-    edgecolor="black"
+    bins=bins,
+    edgecolor="black",
+    linewidth=0.8
 )
-axes[1].set_title("Semester Number")
-axes[1].set_xlabel("Semester")
-axes[1].set_ylabel("Count")
+
+axes[1].set_title("Anzahl der Semester", fontsize=12, pad=10)
+axes[1].set_xlabel("Semester", fontsize=10)
+axes[1].set_ylabel("Anzahl", fontsize=10)
+
+axes[1].grid(axis="y", linestyle="--", alpha=0.6)
+axes[1].set_axisbelow(True)
+
 
 plt.tight_layout()
-plt.savefig("education_and_semester.pdf")
+plt.savefig("bildungsabschluss_und_semester.pdf", dpi=300)
 plt.close()

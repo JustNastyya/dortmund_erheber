@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 numeric_vars = [
     'sat_edu_sucess', 'semester_n', 'uebung_helpful', 'uebung_required',
     'materials_helpfull', 'uebung_required_postpone', 'effective_learning',
@@ -97,3 +101,72 @@ renaming_dict = {
     'Die Materialien, die ich benutze... [... geben mir Sicherheit über Prüfungsrelevanz.]': "materials_safety_exam",
     'Feedback zur Umfrage': "feedback"
 }
+
+
+FACULTY_MAP = {
+    # Informatik / IT
+    "informatik": "Informatik",
+    "bci": "Informatik",
+
+    # Mathematik / Statistik
+    "mathematik": "Mathematik",
+    "statistik": "Statistik",
+    "statistik/ sport": "Statistik",
+
+    # Physik / Chemie
+    "physik": "Physik",
+    "chemie/chemische biologie": "Chemie",
+    "chemische biologie": "Chemie",
+
+    # Maschinenbau / Bau
+    "maschinenbau": "Maschinenbau",
+    "maschinenbau ": "Maschinenbau",
+    "maschienenbau": "Maschinenbau",
+    "bauingenieurwesen": "Bauingenieurwesen",
+    "bauwesen": "Bauingenieurwesen",
+    "architektur und städtebau": "Architektur",
+    "raumplanung": "Raumplanung",
+
+    # Wirtschaft
+    "wirtschaftswissenschaften": "Wirtschaftswissenschaften",
+    "wiwi": "Wirtschaftswissenschaften",
+    "economics": "Wirtschaftswissenschaften",
+    "wirtschafts- und sozialwissenschaften": "Wirtschaftswissenschaften",
+
+    # Sozial / Erziehungswissenschaften
+    "soziologie": "Sozialwissenschaften",
+    "sozialwissenschaften": "Sozialwissenschaften",
+    "erziehungswissenschaft": "Erziehungswissenschaften",
+    "erziehungswissenschaften": "Erziehungswissenschaften",
+    "erziehungswissenschaft und anglistik": "Erziehungswissenschaften",
+    "rehabilitationswissenschaften": "Rehabilitationswissenschaften",
+    "rehawissenschaften": "Rehabilitationswissenschaften",
+
+    # Lehramt
+    "lehramt": "Lehramt",
+    "lehramt / kulturwissenschaften": "Lehramt",
+    "sachunterricht": "Lehramt",
+}
+
+
+def normalize_text(x):
+    if pd.isna(x):
+        return np.nan
+    x = x.lower()
+    x = x.strip()
+    x = " ".join(x.split())
+    return x
+
+
+def faculty_generation(df):
+    df["faculty_raw"] = df["faculty"]
+
+    mask = df["faculty"].isna() | (df["faculty"] == "Sonstiges")
+    df.loc[mask, "faculty_raw"] = df.loc[mask, "faculty_other"]
+    df["faculty_norm"] = df["faculty_raw"].apply(normalize_text)
+    
+    df["faculty_clean"] = df["faculty_norm"].map(FACULTY_MAP)
+    df["faculty_clean"] = df["faculty_clean"].fillna("Sonstiges")
+    
+    df[df["faculty_clean"] == "Sonstiges"] = "Fakultät nicht angegeben"
+    return df
