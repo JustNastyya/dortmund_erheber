@@ -103,6 +103,43 @@ renaming_dict = {
 }
 
 
+umnennen_der_variablen_usage = {
+    "kurzscript_usage": "Kurzskript",
+    "fullscript_usage": "Vollständiges Skript",
+    "notes_usage": "Mitschriften aus der Vorlesung",
+    "videos_lecture_usage": "Videoaufzeichnungen der Vorlesung",
+    "uebeung_sols_usage": "Übungsaufgaben mit Musterlösung",
+    "books_usage": "Bücher",
+    "old_exams_usage": "Altklausuren",
+    "videos_online_usage": "Online-Videos",
+    "ai_usage": "KI-Chatbots"
+}
+
+umnennen_materials = {
+    "material_understanding": "fördern Verstehen statt Auswendiglernen",
+    "materials_orga": "sind klar strukturiert und organisiert",
+    "materials_complicated": "sind nicht unnötig kompliziert dargestellt",
+    "materials_ontime": "stehen rechtzeitig zur Verfügung",
+    "materials_workload": "erhöhen meine Arbeitsbelastung",
+    "materials_help": "erleichtern meinen Lernprozess",
+    "materials_safety": "geben mir Sicherheit, den Stoff zu schaffen",
+    "materials_motivation": "steigern meine Motivation",
+    "materials_independent_learning": "unterstützen mein selbstständiges Lernen",
+    "materials_learning_stress": "reduzieren meinen Prüfungsstress",
+    "materials_timewaste": "erhöhen meinen Zeitaufwand",
+    "materials_safety_exam": "geben mir Sicherheit über Prüfungsrelevanz",
+}
+
+umnennen_allgemein = {
+    "sat_edu_sucess": "Wie zufrieden sind Sie mit ihrem aktuellen Lernerfolg?",
+    "uebung_helpful": "Ich empfinde die wöchentlichen Übungsaufgaben als hilfreich",
+    "uebung_required": "Wenn Übungsaufgaben verpflichtend sind, hilft es mir am Ball zu bleiben.",
+    "materials_helpfull": "Normalerweise finde ich die einem Kurs gestellten Materialien ausreichend und hilfreich.",
+    "uebung_required_postpone": "Wenn ein Kurs keine Verpflichtungen oder Fristen vorgibt, schiebe ich vieles auf.",
+    "effective_learning": "Effizientes Lernen in der Prüfungsvorbereitung ist mir wichtig.",
+}
+
+
 FACULTY_MAP = {
     # Informatik / IT
     "informatik": "Informatik",
