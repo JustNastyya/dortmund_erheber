@@ -47,6 +47,8 @@ def likert_stacked_bar(df, variables, title, filename, renaming):
     fig, ax = plt.subplots(figsize=(8, 0.6 * len(variables)))
 
     left = np.zeros(len(counts))
+    
+    # counts.index = y_labels
 
     for value in counts.columns:
         ax.barh(
@@ -99,8 +101,8 @@ desc[['mean', 'std', 'min', '25%', '50%', '75%', 'max']]
 learning_materials_group_sorted = sort_by_agreement(df, learning_materials_group)
 likert_stacked_bar(
     df,
-    learning_materials_group_sorted,
-    "Wie häufig nutzen Sie die folgenden Arten von Lernmaterialien?",
+    variables=learning_materials_group_sorted,
+    title="Wie häufig nutzen Sie die folgenden Arten von Lernmaterialien?",
     filename="graphs/learning_materials_group_sorted.pdf",
     renaming=umnennen_der_variablen_usage
 )
@@ -108,8 +110,8 @@ likert_stacked_bar(
 materials_that_i_use_sorted = sort_by_agreement(df, materials_that_i_use)
 likert_stacked_bar(
     df,
-    materials_that_i_use_sorted,
-    "Die Materialien, die ich benutze...",
+    variables=materials_that_i_use_sorted,
+    title="Die Materialien, die ich benutze...",
     filename="graphs/materials_that_i_use_sorted.pdf",
     renaming=umnennen_materials
 )
@@ -117,8 +119,8 @@ likert_stacked_bar(
 allgemein_sorted = sort_by_agreement(df, allgemein)
 likert_stacked_bar(
     df,
-    allgemein_sorted,
-    "Allgemein",
+    variables=allgemein_sorted,
+    title="Allgemein",
     filename="graphs/allgemein_sorted.pdf",
     renaming=umnennen_allgemein
 )

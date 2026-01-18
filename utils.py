@@ -48,7 +48,6 @@ allgemein = [
     "materials_helpfull",
     "uebung_required_postpone",
     "effective_learning",
-    "sat_edu_sucess"
 ]
 
 demog = [
@@ -131,13 +130,42 @@ umnennen_materials = {
 }
 
 umnennen_allgemein = {
-    "sat_edu_sucess": "Wie zufrieden sind Sie mit ihrem aktuellen Lernerfolg?",
     "uebung_helpful": "Ich empfinde die wöchentlichen Übungsaufgaben als hilfreich",
     "uebung_required": "Wenn Übungsaufgaben verpflichtend sind, hilft es mir am Ball zu bleiben.",
     "materials_helpfull": "Normalerweise finde ich die einem Kurs gestellten Materialien ausreichend und hilfreich.",
     "uebung_required_postpone": "Wenn ein Kurs keine Verpflichtungen oder Fristen vorgibt, schiebe ich vieles auf.",
     "effective_learning": "Effizientes Lernen in der Prüfungsvorbereitung ist mir wichtig.",
 }
+
+umnennen_bar_plot = {
+    "kurzscript_usage": "Nutzung: Kurzskript",
+    "fullscript_usage": "Nutzung: Vollständiges Skript",
+    "notes_usage": "Nutzung: Mitschriften aus der Vorlesung",
+    "videos_lecture_usage": "Nutzung: Videoaufzeichnungen der Vorlesung",
+    "uebeung_sols_usage": "Nutzung: Übungsaufgaben mit Musterlösung",
+    "books_usage": "Nutzung: Bücher",
+    "old_exams_usage": "Nutzung: Altklausuren",
+    "videos_online_usage": "Nutzung: Online-Videos",
+    "ai_usage": "Nutzung: KI-Chatbots",
+    "material_understanding": "Materialien: fördern Verstehen statt Auswendiglernen",
+    "materials_orga": "Materialien: sind klar strukturiert und organisiert",
+    "materials_complicated": "Materialien: sind nicht unnötig kompliziert dargestellt",
+    "materials_ontime": "Materialien: stehen rechtzeitig zur Verfügung",
+    "materials_workload": "Materialien: erhöhen meine Arbeitsbelastung",
+    "materials_help": "Materialien: erleichtern meinen Lernprozess",
+    "materials_safety": "Materialien: geben mir Sicherheit, den Stoff zu schaffen",
+    "materials_motivation": "Materialien: steigern meine Motivation",
+    "materials_independent_learning": "Materialien: unterstützen mein selbstständiges Lernen",
+    "materials_learning_stress": "Materialien: reduzieren meinen Prüfungsstress",
+    "materials_timewaste": "Materialien: erhöhen meinen Zeitaufwand",
+    "materials_safety_exam": "Materialien: geben mir Sicherheit über Prüfungsrelevanz",
+    "uebung_helpful": "Ich empfinde die wöchentlichen Übungsaufgaben als hilfreich",
+    "uebung_required": "Wenn Übungsaufgaben verpflichtend sind, hilft es mir am Ball zu bleiben.",
+    "materials_helpfull": "Normalerweise finde ich die einem Kurs gestellten Materialien ausreichend und hilfreich.",
+    "uebung_required_postpone": "Wenn ein Kurs keine Verpflichtungen oder Fristen vorgibt, schiebe ich vieles auf.",
+    "effective_learning": "Effizientes Lernen in der Prüfungsvorbereitung ist mir wichtig.",
+}
+
 
 umnennen_heatmap = {
     "kurzscript_usage": "Nutzung: Kurzskript",
