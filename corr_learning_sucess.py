@@ -86,6 +86,8 @@ df.loc[df["sat_edu_sucess"] == 3.0,"sat_edu_sucess"] = "3"
 df.loc[df["sat_edu_sucess"] == 4.0,"sat_edu_sucess"] = "4"
 df.loc[df["sat_edu_sucess"] == 5.0,"sat_edu_sucess"] = "5"
 
+df["sat_edu_sucess"].value_counts()
+
 sns.countplot(
     x="sat_edu_sucess",
     data=df,
