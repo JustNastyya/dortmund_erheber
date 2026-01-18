@@ -89,64 +89,7 @@ Das Verteilen von QR-Codes ist zwar praktisch bringt, aber methodische Einschrä
 
 \subsection{Stichprobe und Datensatz}
 
-Der für diese Analyse verwendete Datensatz wurde von unseren Dozent:innen bereitgestellt. Die Daten stammen aus der elften Runde des \texttt{European Social Survey} (ESS11), einer international vergleichenden, akademisch geleiteten Umfrage. ESS11 umfasst Informationen aus 28 europäischen Staaten.
-
-Die Datenerhebung erfolgte durch etwa einstündige, persönliche Interviews mit Personen ab 15 Jahren, die in privaten Haushalten leben – unabhängig von Nationalität, Staatsbürgerschaft, Sprache oder rechtlichem Status. Die Erhebungsphase der elften Runde erstreckte sich vom 8. März 2023 bis zum 4. Juli 2024.
-
-Der Datensatz umfasst 46\,162 Beobachtungen und siebzehn Variablen. Diese beinhalten sowohl personenbezogene Merkmale – wie Alter, Geschlecht und eine etwaige COVID-19-Erkrankung – als auch Angaben zum Vertrauen der Befragten in politische Institutionen. Einen detaillierten Überblick über die numerischen Merkmale bietet Tabelle~\ref{tab:features_overview_blatt}. Zur besseren Verständlichkeit wurden die ursprünglichen Variablennamen umbenannt; in der Analyse wird durchgehend die in der Tabelle angegebene Bezeichnung verwendet.
-
-\begin{minipage}{\textwidth}
-    \centering
-    \begin{tabular}{l p{8cm} p{4cm}}
-        \toprule
-        Merkmal & Beschreibung & Wertebereich \\
-        \midrule
-        \texttt{person\_id} & Eindeutige ID-Nummer der befragten Person & [50002, 211884] \\
-        \texttt{covid\_infection} & Selbstberichtete COVID-19-Infektion (1 = positiver Test, 2 = vermutete Infektion, 3 = keine Infektion) & \{1, 2, 3\} \\
-        \texttt{vaccined} & COVID-19-Impfstatus: mindestens eine Dosis eines in [Land] zugelassenen Impfstoffs erhalten (1 = ja, 2 = nein) & \{1, 2\} \\ 
-        \texttt{education\_niveau} & Bildungsniveau & \{1, \dots, 7, 55\} \\
-        \texttt{house\_income} & Haushaltseinkommen (Dezile) & \{1, \dots, 10\} \\
-        \texttt{houshold\_n} & Anzahl der Personen im Haushalt & \{0, \dots, 13\} \\
-        \texttt{internet\_frequency} & Häufigkeit der Internetnutzung (1 = nie bis 5 = täglich) & \{1, \dots, 5\} \\
-        \texttt{gender} & Geschlecht (1 = männlich, 2 = weiblich) & \{1, 2\} \\
-        \texttt{marital\_status} & Familienstand & \{1, \dots, 6\} \\
-        \texttt{residency\_type} & Art des Wohnorts (von Großstadt bis ländlich) & \{1, \dots, 5\} \\
-        \texttt{age} & Alter der befragten Person & [15, 90] \\
-        \texttt{trust\_parlament} & Vertrauen in das nationale Parlament & \{1, \dots, 10\} \\
-        \texttt{trust\_legalsys} & Vertrauen in das Rechtssystem & \{1, \dots, 10\} \\
-        \texttt{trust\_police} & Vertrauen in die Polizei & \{1, \dots, 10\} \\
-        \texttt{trust\_politics} & Vertrauen in Politiker:innen & \{1, \dots, 10\} \\
-        \texttt{trust\_partys} & Vertrauen in politische Parteien & \{1, \dots, 10\} \\
-        \bottomrule
-    \end{tabular}
-    \captionof{table}{Detaillierter Überblick über die im Datensatz enthaltenen Variablen}
-    \label{tab:features_overview_blatt}
-\end{minipage}
-
-\vspace{1em}
-
-
-
-Einige Variablen erfordern eine genauere Erläuterung hinsichtlich ihrer Kodierung. Die Variable \texttt{education\_niveau} basiert auf dem internationalen Standard ISCED (International Standard Classification of Education) und nimmt Werte von eins bis sieben an. Diese können als aufsteigende Stufen formaler Bildungsabschlüsse interpretiert werden – je höher der Wert, desto höher der Bildungsgrad.
-
-Auch die Variable \texttt{marital\_status}, die den Familienstand abbildet, ist in sechs Kategorien unterteilt: (1) gesetzlich verheiratet, (2) in einer gesetzlich eingetragenen Partnerschaft, (3) gesetzlich getrennt lebend, (4) gesetzlich geschieden, (5) verwitwet und (6) keine der genannten Optionen.
-
-
-Die sogenannten Vertrauensvariablen erfassen das Vertrauen der Befragten in verschiedene staatliche Institutionen. Hierzu wurden die Teilnehmenden gebeten, ihr Vertrauen in jede Institution auf einer Skala von 1 (sehr geringes Vertrauen) bis 10 (sehr hohes Vertrauen) einzuschätzen.
-
-Zudem enthält der Datensatz die Variable \texttt{country}, die angibt, in welchem Land die jeweilige Person befragt wurde. Diese Variable umfasst 28 Ausprägungen, wobei jeweils der standardisierte Länderkürzel verwendet wird.
-
-
-Zusätzlich wurde in der Umfrage ein Kodierungssystem für Antwortverweigerungen oder fehlende Angaben verwendet. Diese speziellen Werte kennzeichnen Fälle, in denen eine Person eine Frage nicht beantworten wollte oder konnte. Da solche Fälle im Datensatz nur sehr selten auftreten, wurden diese Werte in der Spalte Abbildermenge der Übersichtstabelle nicht aufgeführt. Im Kapitel~4.1 wird der Umgang mit den fehlenden Werten näher erläutert.
-
-
 \subsection{Datenqualität}
-
-Die Qualität der im ESS11 erhobenen Daten ist grundsätzlich hoch, dennoch müssen einige Aspekte berücksichtigt werden, die die Vergleichbarkeit und Aussagekraft beeinflussen können.
-
-Zunächst unterscheiden sich die Stichprobendesigns zwischen den teilnehmenden Län- \\ dern teils erheblich. Ziel dieser Designs ist es, in jedem Land eine vergleichbare effektive Stichprobengröße zu erreichen, um möglichst ähnliche Konfidenzintervalle gewährleisten zu können. In  vielen Ländern basiert die Auswahl auf einer Adressstichprobe: Dabei wird an einer zufällig ausgewählten Adresse eine Person zufällig ausgewählt. Diese Methode führt allerdings dazu, dass Personen, die allein in einem Haushalt leben, eine höhere Auswahlwahrscheinlichkeit haben als Personen in Mehrpersonenhaushalten. Dies kann die Repräsentativität verzerren, insbesondere in Bezug auf Merkmale, die mit Haushaltsgröße oder -struktur korrelieren.
-
-Einflussfaktoren auf die Datenqualität ergeben sich unter anderem aus Unterschieden im Umgang mit Nonresponse zwischen den Ländern, etwa in der Nachbearbeitung, Schulung des Erhebungspersonals oder Teilnahmebereitschaft. Solche Unterschiede können zu systematischen Verzerrungen führen. Zudem weisen einige Variablen, wie \texttt{house\_income}, viele fehlende Werte auf. Auch die Zahl der Beobachtungen variiert je nach Land, was bei der Interpretation der Ergebnisse berücksichtigt werden sollte.
 
 
 \section{Ergebnisse}
@@ -233,16 +176,6 @@ Bezüglich der Nutzung konkreter Lernmaterialien zeigen sich ebenfalls überwieg
 Zusammenfassend zeigt die Abbildung, dass zwischen dem Lernerfolg und den erhobenen Nutzungs- und Bewertungsvariablen überwiegend nur geringe Zusammenhänge bestehen. Die Ergebnisse deuten darauf hin, dass der wahrgenommene Lernerfolg nicht stark durch einzelne Lernmaterialien oder deren Eigenschaften erklärt wird, sondern vermutlich auch von weiteren Faktoren beeinflusst wird.
 
 \section{Diskussion}
-
-In der vorliegenden Analyse wurde untersucht, welche Faktoren die Entscheidung zur COVID-19-Impfung beeinflussen. Dazu wurden Daten der elften Runde des European Social Survey (ESS11) herangezogen, die umfangreiche Informationen aus 28 europäischen Ländern enthalten. Die Analyse basierte auf einem Datensatz mit über 46.000 Beobachtungen, wobei personenbezogene Merkmale, sozioökonomische Indikatoren sowie Vertrauen in staatliche Institutionen als Prädiktoren berücksichtigt wurden.
-
-Zur Vorbereitung der Daten wurde eine umfangreiche Datenbereinigung und - transformation durchgeführt. Darüber hinaus wurden die Annahmen der logistischen Regression geprüft und bei einigen Variablen durch Quadratwurzel-Transformationen korrigiert. Zur Berücksichtigung der Klassenungleichgewichte wurde eine Gewichtung der Zielvariable implementiert.
-
-Die Analyse ergab, dass vor allem Alter, Bildungsniveau und Haushaltseinkommen starke positive Prädiktoren für die Impfwahrscheinlichkeit sind. Ältere Personen sowie solche mit höherer Bildung und höherem Einkommen zeigen deutlich erhöhte Impfquoten. Ebenso spielte das Vertrauen in staatliche Institutionen, insbesondere in Parlament, Rechtssystem und Polizei, eine wichtige Rolle und erhöhte die Impfbereitschaft signifikant. Darüber hinaus zeigten sich ausgeprägte länderspezifische Unterschiede in der Impfquote, wobei einige südeuropäische Länder hohe Impfraten aufwiesen, während einige osteuropäische Länder vergleichsweise niedrige Werte zeigten. Weitere Faktoren wie Geschlecht, Familienstand oder Erfahrungen mit einer COVID-19-Infektion beeinflussten die Entscheidung ebenfalls signifikant, allerdings mit teils moderaterer Stärke. Interessanterweise hatte die tägliche Internetnutzung keinen signifikanten Einfluss.
-
-Trotz der umfangreichen Daten und der sorgfältigen Analyse weist die Studie einige Einschränkungen auf. Die Stichprobenauswahl und das Erhebungsdesign unterscheiden sich zwischen den Ländern, was die Vergleichbarkeit einschränken und potenzielle Verzerrungen erzeugen kann, etwa durch unterschiedliche Nonresponse-Raten oder Haushaltsgrößen. Zudem wurden fehlende Werte insbesondere beim Haushaltseinkommen durch eine Indikatorvariable ersetzt, was zwar den Verlust von Beobachtungen minimiert, aber möglicherweise Verzerrungen in den Schätzungen hervorruft. Die Vereinfachung kategorialer Variablen zu kontinuierlichen Variablen kann ebenfalls zu Informationsverlust führen. Außerdem kann die logistische Regression nur lineare Effekte erfassen; komplexere Zusammenhänge oder Interaktionen bleiben unberücksichtigt. Nicht zuletzt besteht die Möglichkeit, dass wichtige Einflussfaktoren außerhalb des ESS-Datensatzes liegen, die hier nicht erfasst wurden.
-
-Insgesamt liefert die Analyse wertvolle Einblicke in die Determinanten der COVID-19-Impfbereitschaft in Europa, betont aber zugleich die Notwendigkeit weiterer Forschung mit noch differenzierteren Daten und Methoden, um die komplexen Zusammenhänge umfassender abzubilden.
 
 \section{Reflexion der fragebogengestützten Erhebung} 
 
