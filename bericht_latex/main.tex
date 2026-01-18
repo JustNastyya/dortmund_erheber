@@ -87,7 +87,6 @@ Das Verteilen von QR-Codes ist zwar praktisch bringt, aber methodische Einschrä
 
 
 
-
 \subsection{Stichprobe und Datensatz}
 
 Der für diese Analyse verwendete Datensatz wurde von unseren Dozent:innen bereitgestellt. Die Daten stammen aus der elften Runde des \texttt{European Social Survey} (ESS11), einer international vergleichenden, akademisch geleiteten Umfrage. ESS11 umfasst Informationen aus 28 europäischen Staaten.
@@ -156,7 +155,6 @@ Dieses Kapitel liefert die Anwendung der beschriebenen Methoden und die Auswertu
 
 \subsection{quasi demografie}
 
-
 \subsection{Ergebnisse zur Nutzung und Bewertung von Lernmaterialien}
 
 In diesem Unterkapitel geben wir einen deskriptiven Überblick über die Antworten auf die wichtigsten Fragen des Fragebogens und untersuchen, welche Lernmaterialien den Studierenden wichtig sind und wie sie genutzt werden. Zu diesem Zweck wurden gestapelte Balkendiagramme für alle kategorialen Variablen erstellt. Die entsprechenden Visualisierungen sind in Abbildung~\ref{fig:materials_nutzung} und Abbildung~\ref{fig:materials_qualities} dargestellt.
@@ -192,10 +190,47 @@ Ein gemischteres Bild zeigt sich bei den Aussagen zum Prüfungsstress und zur Mo
 Hinsichtlich des Zeitaufwands und der Arbeitsbelastung zeigen die Ergebnisse, dass ein Teil der Studierenden angibt, durch die Lernmaterialien einen erhöhten Zeitaufwand und eine höhere Arbeitsbelastung zu erleben. Gleichzeitig werden den Materialien jedoch häufig eine gute Struktur, hohe Verständlichkeit sowie eine klare Prüfungsrelevanz zugeschrieben.
 
 
-\subsection{nebenfragestellung}
+\subsection{Explorative Analyse}
 
+In diesem Unterkapitel stellen wir die Ergebnisse der explorativen Analyse des Fragebogens vor.
 
+Zunächst wurden die restlichen Fragen zu den Einschätzungen der Studierenden zu allgemeinen Aussagen rund um Lernverhalten, Motivation und die Gestaltung von Kursen ebenfalls als gestapeltes Balkendiagramm dargestellt. Die entsprechende Abbildung ist in Abbildung~\ref{fig:allgemein_sorted} zu sehen.
 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=16cm]{plots/allgemein_sorted.pdf}
+    \caption{Gestapeltes Balkendiagramm zu allgemeinen Aussagen zum Lernverhalten}
+    \label{fig:allgemein_sorted}
+\end{figure}
+
+Die Ergebnisse zeigen insgesamt eine hohe Zustimmung zu mehreren Aussagen und fallen überwiegend positiv aus. Besonders deutlich wird dies bei der Aussage „Effizientes Lernen in der Prüfungsvorbereitung ist mir wichtig“, bei der der Großteil der Studierenden die höchste Antwortkategorie (5) wählt. Auch die Aussage, dass wöchentliche Übungsaufgaben als hilfreich empfunden werden, wird sehr positiv bewertet.
+
+Die bereitgestellten Kursmaterialien werden insgesamt als ausreichend und hilfreich eingeschätzt, wobei auch hier der Schwerpunkt der Antworten in den höheren Skalenpunkten liegt.
+
+Im nächsten Schritt untersuchen wir eine zentrale Variable, den Lernerfolg. Dazu wurde ein Balkendiagramm erstellt (siehe Abbildung~\ref{fig:bar_plot_edu_sucess}). Die Abbildung zeigt die Verteilung der Zufriedenheit mit dem Studium auf einer fünfstufigen Skala von 1 (sehr unzufrieden) bis 5 (sehr zufrieden). Zusätzlich ist eine Kategorie für fehlende Angaben enthalten. Insgesamt wird deutlich, dass die Zufriedenheit der Studierenden überwiegend im mittleren Bereich liegt.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=13cm]{plots/barplot_edu_sucess.pdf}
+    \caption{Balkendiagramm zur Zufriedenheit mit dem Studium (Lernerfolg)}
+    \label{fig:bar_plot_edu_sucess}
+\end{figure}
+
+Die meisten gültigen Antworten entfallen auf die Kategorie 2 mit 38 Nennungen, gefolgt von der Kategorie 4 mit 32 Nennungen. Sehr hohe Zufriedenheit (Kategorie 5) wurde vergleichsweise selten angegeben und umfasst lediglich 4 Personen, während eine sehr niedrige Zufriedenheit (Kategorie 1) von 9 Studierenden berichtet wurde.
+
+Dies deutet darauf hin, dass ein Großteil der Studierenden mit dem Studium eher mäßig zufrieden ist, wobei sich die Ergebnisse insgesamt im mittleren Bereich konzentrieren.
+
+Auffällig ist zudem der relativ hohe Anteil an fehlenden Angaben mit 25 Nennungen. Dieser Umstand sollte bei der Interpretation der Ergebnisse berücksichtigt werden, da er die Aussagekraft der Verteilung der Zufriedenheitswerte einschränken kann.
+
+Anschließend untersuchen wir die Korrelationen zwischen dem Lernerfolg und allen weiteren Variablen. Zur Analyse wurde die Spearman-Rangkorrelation verwendet. Diese eignet sich besonders für ordinal skalierte Daten, wie sie bei Likert-Skalen mit Ausprägungen von 1 bis 5 vorliegen. Im Gegensatz zur Pearson-Korrelation setzt die Spearman-Korrelation keine Normalverteilung voraus und misst monotone Zusammenhänge, wodurch sie für Fragebogendaten dieser Art besser geeignet ist.
+
+Die Korrelationen zwischen Lernerfolg und allen anderen Variablen wurden als Balkendiagramm dargestellt und befinden sich im Anhang (Abbildung~\ref{fig:barplot_sat_edu_success_correlations}). Insgesamt fallen die meisten Zusammenhänge schwach bis moderat aus.
+
+Die stärksten positiven Zusammenhänge zeigen sich bei materialbezogenen Aspekten wie der Reduktion von Prüfungsstress ($\rho = 0{,}35$), der wahrgenommenen Sicherheit, den Stoff zu schaffen, sowie der Einschätzung der Prüfungsrelevanz der Inhalte. Auch motivationale und lernunterstützende Eigenschaften der Materialien weisen durchgehend positive, jedoch schwächere Korrelationen mit dem Lernerfolg auf.
+
+Bezüglich der Nutzung konkreter Lernmaterialien zeigen sich ebenfalls überwiegend schwache positive Zusammenhänge, insbesondere bei der Nutzung von Übungsaufgaben mit Musterlösung, vollständigen Skripten und Altklausuren. Dagegen weisen die Nutzung von Kurzskripten, Online-Videos und KI-Chatbots geringe negative Korrelationen auf, die insgesamt jedoch sehr schwach ausfallen.
+
+Zusammenfassend zeigt die Abbildung, dass zwischen dem Lernerfolg und den erhobenen Nutzungs- und Bewertungsvariablen überwiegend nur geringe Zusammenhänge bestehen. Die Ergebnisse deuten darauf hin, dass der wahrgenommene Lernerfolg nicht stark durch einzelne Lernmaterialien oder deren Eigenschaften erklärt wird, sondern vermutlich auch von weiteren Faktoren beeinflusst wird.
 
 \section{Diskussion}
 
@@ -209,7 +244,7 @@ Trotz der umfangreichen Daten und der sorgfältigen Analyse weist die Studie ein
 
 Insgesamt liefert die Analyse wertvolle Einblicke in die Determinanten der COVID-19-Impfbereitschaft in Europa, betont aber zugleich die Notwendigkeit weiterer Forschung mit noch differenzierteren Daten und Methoden, um die komplexen Zusammenhänge umfassender abzubilden.
 
-\section{Reflexion der fragebogengestützten Erhebung}
+\section{Reflexion der fragebogengestützten Erhebung} 
 
 \newpage
 
@@ -220,5 +255,12 @@ Insgesamt liefert die Analyse wertvolle Einblicke in die Determinanten der COVID
 \newpage
 
 \appendix
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=16cm]{plots/barplot_sat_edu_success_correlations.pdf}
+    \caption{Balkendiagramm von spearsmann korrelationen TODO}
+    \label{fig:barplot_sat_edu_success_correlations}
+\end{figure}
 
 \end{document}
