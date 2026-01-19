@@ -56,8 +56,6 @@ Zur Beantwortung dieser Fragestellungen wurde eine empirische Studie in Form ein
 
 Zunächst wird die Motivation der Studie dargelegt und die zugrunde liegenden Forschungsfragen formuliert. Anschließend wird das verwendete Erhebungsinstrument vorgestellt, wobei der Aufbau des Online-Fragebogens sowie die Gründe für dessen Einsatz erläutert werden. Darauf aufbauend werden die Stichprobe und der Datensatz beschrieben, einschließlich der Art der erhobenen Variablen und der vorgenommenen Datenaufbereitung. Im Ergebnisteil werden die zentralen Befunde der Untersuchung mithilfe von Grafiken und Tabellen dargestellt und inhaltlich erläutert, wobei sowohl deskriptive Auswertungen als auch explorative Analysen berücksichtigt werden. Abschließend werden die Ergebnisse im Diskussionsteil im Hinblick auf die Forschungsfragen interpretiert, Limitationen der Studie reflektiert und mögliche Verbesserungen der fragebogengestützten Erhebung diskutiert. 
 
-\section{Problemstellung}
-
 \section{Erhebungsinstrument}
 
 \subsection{Wahl der Methode}
@@ -147,7 +145,7 @@ Nach Fragebogenblöcken ergeben sich folgende Anzahlen fehlender Werte:
 
 \section{Ergebnisse}
 
-Dieses Kapitel liefert die Auswertung der Ergebnisse. Die Daten wurden bearbeitet mithilfe der Software Python \cite{python} und Python-Bibliotheken pandas \cite{reback2020pandas}, plotly \cite{plotly2015}, scipy \cite{virtanen2020scipy}, matplotlib \cite{hunter2007matplotlib}, statsmodels \cite{seabold2010statsmodels} und seaborn \cite{seabold2010statsmodels}. TODO brauchen wir es?
+Dieses Kapitel liefert die Auswertung der Ergebnisse. Die Daten wurden bearbeitet mithilfe der Software Python \cite{python} und Python-Bibliotheken: pandas \cite{reback2020pandas}, numpy \cite{harris2020array}, plotly \cite{plotly2015}, matplotlib \cite{hunter2007matplotlib}, und seaborn \cite{seabold2010statsmodels}.
 
 \subsection{quasi demografie}
 
@@ -232,20 +230,21 @@ Zusammenfassend zeigt die Abbildung, dass zwischen dem Lernerfolg und den erhobe
 \section{Diskussion}
 
 \section{Reflexion der fragebogengestützten Erhebung} 
-
 \newpage
 
 %\section{Literaturverzeichnis}
 %\nocite{*}
+\printbibliography
 \nocite{*}
 
 \newpage
 
 \appendix
 
+\section{Appendix}
+
 \begin{figure}[htpb]
-    \centering
-    \includegraphics[width=16cm]{plots/barplot_sat_edu_success_correlations.pdf}
+    \includegraphics[width=18cm]{plots/barplot_sat_edu_success_correlations.pdf}
     \caption{Balkendiagramm von spearsmann korrelationen TODO}
     \label{fig:barplot_sat_edu_success_correlations}
 \end{figure}
