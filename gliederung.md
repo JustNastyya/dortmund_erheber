@@ -37,6 +37,7 @@ erhobene Variablen inkl. Skalenniveaus, ca. 1 Seite) (elaha!)
 in welcher Form wir den Datensatz bekommen haben -> datensatz womit wir im eneffekt arbeiten
 
 dies bezieht sich auf:
+- wir nutzen nur 1 Teil vom datensatz, welches
 - umnennen von variablen
 - datenbereinigung
 - beschreiben von na werten
