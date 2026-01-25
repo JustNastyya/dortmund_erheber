@@ -79,7 +79,7 @@ plt.figure(figsize=(7, 5))
 
 # Count of each category
 
-df.loc[df["sat_edu_sucess"].isna(),"sat_edu_sucess"] = "Nicht angegeben"
+df.loc[df["sat_edu_sucess"].isna(),"sat_edu_sucess"] = ""
 df.loc[df["sat_edu_sucess"] == 1.0,"sat_edu_sucess"] = "1"
 df.loc[df["sat_edu_sucess"] == 2.0,"sat_edu_sucess"] = "2"
 df.loc[df["sat_edu_sucess"] == 3.0,"sat_edu_sucess"] = "3"
