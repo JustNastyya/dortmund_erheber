@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from utils import numeric_vars, faculty_generation
 
 
@@ -20,7 +21,7 @@ desc[['mean', 'std', 'min', '25%', '50%', '75%', 'max']]
 
 # ##################### demographics
 
-
+"""
 df = faculty_generation(df)
 faculty_counts = df["faculty_clean"].value_counts()
 
@@ -77,3 +78,140 @@ axes[1].set_axisbelow(True)
 plt.tight_layout()
 plt.savefig("bildungsabschluss_und_semester.pdf", dpi=300)
 plt.close()
+"""
+
+
+
+#       abschluss und semester
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# ----------------------
+# Plot 1: Education level
+# ----------------------
+edu_order = df["edu_level"].value_counts().index
+
+sns.countplot(
+    x="edu_level",
+    data=df,
+    order=edu_order,
+    palette="pastel",
+    ax=axes[0]
+)
+
+axes[0].set_title("Bildungsabschluss", fontsize=12, pad=10)
+axes[0].set_xlabel("")
+axes[0].set_ylabel("Anzahl", fontsize=10)
+
+# Add counts + headroom
+y_max = max(p.get_height() for p in axes[0].patches)
+for p in axes[0].patches:
+    axes[0].annotate(
+        f"{int(p.get_height())}",
+        (p.get_x() + p.get_width() / 2, p.get_height()),
+        ha="center",
+        va="bottom",
+        fontsize=10
+    )
+
+axes[0].set_ylim(0, y_max * 1.1)
+axes[0].grid(axis="y", alpha=0.3)
+axes[0].set_axisbelow(True)
+axes[0].tick_params(axis="x")
+
+
+# ----------------------
+# Plot 2: Number of semesters
+# ----------------------
+
+df.loc[df["semester_n"] == 1.0,"semester_n"] = "1"
+df.loc[df["semester_n"] == 2.0,"semester_n"] = "2"
+df.loc[df["semester_n"] == 3.0,"semester_n"] = "3"
+df.loc[df["semester_n"] == 4.0,"semester_n"] = "4"
+df.loc[df["semester_n"] == 5.0,"semester_n"] = "5"
+df.loc[df["semester_n"] == 6.0,"semester_n"] = "6"
+df.loc[df["semester_n"] == 7.0,"semester_n"] = "7"
+df.loc[df["semester_n"] == 10.0,"semester_n"] = "10"
+df.loc[df["semester_n"] == 12.0,"semester_n"] = "12"
+
+semester_order = df["semester_n"].value_counts().sort_index().index
+
+sns.countplot(
+    x="semester_n",
+    data=df,
+    order=semester_order,
+    palette="pastel",
+    ax=axes[1]
+)
+
+axes[1].set_title("Anzahl der Semester", fontsize=12, pad=10)
+axes[1].set_xlabel("")
+axes[1].set_ylabel("Anzahl", fontsize=10)
+
+# Add counts + headroom
+y_max = max(p.get_height() for p in axes[1].patches)
+for p in axes[1].patches:
+    axes[1].annotate(
+        f"{int(p.get_height())}",
+        (p.get_x() + p.get_width() / 2, p.get_height()),
+        ha="center",
+        va="bottom",
+        fontsize=10
+    )
+
+axes[1].set_ylim(0, y_max * 1.1)
+axes[1].grid(axis="y", alpha=0.3)
+axes[1].set_axisbelow(True)
+
+
+plt.tight_layout()
+plt.savefig(
+    "graphs/bildungsabschluss_und_semester_v2.pdf",
+    dpi=300,
+    bbox_inches="tight"
+)
+plt.close()
+
+
+# ------------- demographics 2.0
+df = faculty_generation(df)
+
+order = df["faculty_clean"].value_counts().index
+
+sns.countplot(
+    x="faculty_clean",
+    data=df,
+    palette="pastel",
+    order=order
+)
+
+ax = plt.gca()
+
+# Add counts on top of bars
+for p in ax.patches:
+    ax.annotate(
+        f'{int(p.get_height())}',
+        (p.get_x() + p.get_width() / 2, p.get_height()),
+        ha='center',
+        va='bottom',
+        fontsize=10
+    )
+
+# Add headroom so labels don't get cut off
+y_max = max(p.get_height() for p in ax.patches)
+ax.set_ylim(0, y_max * 1.1)
+
+plt.title("Verteilung der Fakultäten", fontsize=10)
+plt.ylabel("Anzahl", fontsize=10)
+plt.xlabel("", fontsize=10)
+plt.xticks(rotation=45, ha="right", fontsize=10)
+plt.grid(axis="y", alpha=0.3)
+
+plt.tight_layout()
+plt.savefig(
+    "graphs/faculty_distribution_v2.pdf",
+    bbox_inches="tight"
+)
+
+# plt.show()
+plt.close()
+
