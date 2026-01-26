@@ -49,9 +49,9 @@ axes[0].bar(
     linewidth=0.8
 )
 
-axes[0].set_title("Bildungsabschluss", fontsize=12, pad=10)
-axes[0].set_xlabel("Abschluss", fontsize=10)
-axes[0].set_ylabel("Anzahl", fontsize=10)
+axes[0].set_title("Bildungsabschluss", fontsize=14, pad=10)
+axes[0].set_xlabel("Abschluss", fontsize=14)
+axes[0].set_ylabel("Anzahl", fontsize=14)
 
 axes[0].tick_params(axis="x")
 axes[0].grid(axis="y", linestyle="--", alpha=0.6)
@@ -67,9 +67,9 @@ axes[1].hist(
     linewidth=0.8
 )
 
-axes[1].set_title("Anzahl der Semester", fontsize=12, pad=10)
-axes[1].set_xlabel("Semester", fontsize=10)
-axes[1].set_ylabel("Anzahl", fontsize=10)
+axes[1].set_title("Anzahl der Semester", fontsize=14, pad=10)
+axes[1].set_xlabel("Semester", fontsize=14)
+axes[1].set_ylabel("Anzahl", fontsize=14)
 
 axes[1].grid(axis="y", linestyle="--", alpha=0.6)
 axes[1].set_axisbelow(True)
@@ -98,9 +98,9 @@ sns.countplot(
     ax=axes[0]
 )
 
-axes[0].set_title("Bildungsabschluss", fontsize=12, pad=10)
+axes[0].set_title("Bildungsabschluss", fontsize=14, pad=10)
 axes[0].set_xlabel("")
-axes[0].set_ylabel("Anzahl", fontsize=10)
+axes[0].set_ylabel("Anzahl", fontsize=14)
 
 # Add counts + headroom
 y_max = max(p.get_height() for p in axes[0].patches)
@@ -110,13 +110,13 @@ for p in axes[0].patches:
         (p.get_x() + p.get_width() / 2, p.get_height()),
         ha="center",
         va="bottom",
-        fontsize=10
+        fontsize=14
     )
 
 axes[0].set_ylim(0, y_max * 1.1)
 axes[0].grid(axis="y", alpha=0.3)
 axes[0].set_axisbelow(True)
-axes[0].tick_params(axis="x")
+axes[0].tick_params(axis="x", labelsize=14)
 
 
 # ----------------------
@@ -143,9 +143,9 @@ sns.countplot(
     ax=axes[1]
 )
 
-axes[1].set_title("Anzahl der Semester", fontsize=12, pad=10)
+axes[1].set_title("Anzahl der Semester", fontsize=14, pad=10)
 axes[1].set_xlabel("")
-axes[1].set_ylabel("Anzahl", fontsize=10)
+axes[1].set_ylabel("Anzahl", fontsize=14)
 
 # Add counts + headroom
 y_max = max(p.get_height() for p in axes[1].patches)
@@ -155,12 +155,13 @@ for p in axes[1].patches:
         (p.get_x() + p.get_width() / 2, p.get_height()),
         ha="center",
         va="bottom",
-        fontsize=10
+        fontsize=14,
     )
 
 axes[1].set_ylim(0, y_max * 1.1)
 axes[1].grid(axis="y", alpha=0.3)
 axes[1].set_axisbelow(True)
+axes[1].tick_params(axis="x", labelsize=14)
 
 
 plt.tight_layout()
@@ -193,17 +194,17 @@ for p in ax.patches:
         (p.get_x() + p.get_width() / 2, p.get_height()),
         ha='center',
         va='bottom',
-        fontsize=10
+        fontsize=14
     )
 
 # Add headroom so labels don't get cut off
 y_max = max(p.get_height() for p in ax.patches)
 ax.set_ylim(0, y_max * 1.1)
 
-plt.title("Verteilung der Fakultäten", fontsize=10)
-plt.ylabel("Anzahl", fontsize=10)
-plt.xlabel("", fontsize=10)
-plt.xticks(rotation=45, ha="right", fontsize=10)
+plt.title("Verteilung der Fakultäten", fontsize=14)
+plt.ylabel("Anzahl", fontsize=14)
+plt.xlabel("", fontsize=14)
+plt.xticks(rotation=45, ha="right", fontsize=14)
 plt.grid(axis="y", alpha=0.3)
 
 plt.tight_layout()

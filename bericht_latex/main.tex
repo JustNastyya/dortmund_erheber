@@ -11,6 +11,7 @@
 \usepackage{caption}
 
 \usepackage[backend=biber]{biblatex}
+
 %\usepackage{natbib}
 \addbibresource{citations.bib}
 \addbibresource{citations.bib}
@@ -56,7 +57,6 @@ Zur Beantwortung dieser Fragestellungen wurde eine empirische Studie in Form ein
 
 Zunächst wird das verwendete Erhebungsinstrument vorgestellt, wobei der Aufbau des Online-Fragebogens sowie die Gründe für dessen Einsatz erläutert werden. Darauf aufbauend werden die Stichprobe und der Datensatz beschrieben, einschließlich der Art der erhobenen Variablen und der vorgenommenen Datenaufbereitung. Im Ergebnisteil werden die zentralen Befunde der Untersuchung mithilfe von Grafiken und Tabellen dargestellt und inhaltlich erläutert, wobei sowohl deskriptive Auswertungen als auch explorative Analysen berücksichtigt werden. Zudem werden die Ergebnisse im Diskussionsteil im Hinblick auf die Forschungsfragen interpretiert, Limitationen der Studie reflektiert und mögliche Verbesserungen der fragebogengestützten Erhebung diskutiert. Abschließend erfolgt darüber hinaus eine reflektierende Rückschau darauf, welche Aspekte im Arbeitsprozess optimiert hätten werden können.
 
-\section{Erhebungsinstrument}
 
 \section{Erhebungsinstrument}
 
@@ -135,7 +135,7 @@ Nach Fragebogenblöcken ergeben sich folgende Anzahlen fehlender Werte:
 
 \section{Ergebnisse}
 
-Dieses Kapitel liefert die Auswertung der Ergebnisse. Die Daten wurden bearbeitet mithilfe der Software Python \cite{python} und Python-Bibliotheken: pandas \cite{reback2020pandas}, numpy \cite{harris2020array}, plotly \cite{plotly2015}, matplotlib \cite{hunter2007matplotlib}, und seaborn \cite{seabold2010statsmodels}.
+Dieses Kapitel liefert die Auswertung der Ergebnisse. Die Daten wurden bearbeitet mithilfe der Software Python \cite{python} und Python-Bibliotheken: pandas \cite{reback2020pandas}, numpy \cite{harris2020array}, plotly \cite{plotly2015}, matplotlib \cite{hunter2007matplotlib}.
 
 \subsection{Analyse der Personenbezogenen Merkmalen}
 
@@ -145,7 +145,7 @@ In diesem Unterkapitel werden die personenbezogenen Merkmale der Befragten darge
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{bildungsabschluss_und_semester}
+  \includegraphics[width=\textwidth]{plots/bildungsabschluss_und_semester_v2.pdf}
   \caption{Verteilung der Befragten nach Bildungsabschluss und Fachsemester}
   \label{fig:abschluss_semester}
 \end{figure}
@@ -158,7 +158,7 @@ Insgesamt ist bei der Interpretation der folgenden Ergebnisse zu berücksichtige
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{faculty_distribution}
+  \includegraphics[width=14cm]{plots/faculty_distribution_v2.pdf}
   \caption{Verteilung der Befragten nach Fakultätszugehörigkeit}
   \label{fig:faculty}
 \end{figure}
@@ -188,18 +188,23 @@ Insgesamt zeigt die Abbildung, dass Studierende vor allem solche Lernmaterialien
 
 Abbildung~\ref{fig:materials_qualities} zeigt die Einschätzung der Studierenden zu verschiedenen Aussagen über die von ihnen genutzten Lernmaterialien.
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=16cm]{plots/materials_that_i_use_sorted.pdf}
-    \caption{Gestapeltes Balkendiagramm wichtiger Eigenschaften von Lernmaterialien aus Sicht der Studierenden}
-    \label{fig:materials_qualities}
-\end{figure}
-
 Die Ergebnisse zeigen insgesamt eine eher positive Bewertung der Lernmaterialien. Viele Aussagen weisen hohe Anteile in den oberen Skalenpunkten (4 und 5) auf. Besonders deutlich wird dies bei Aussagen wie „geben mir Sicherheit, den Stoff zu schaffen“, „fördern Verstehen statt Auswendiglernen“ sowie „sind klar strukturiert und organisiert“. Auch die Unterstützung des selbstständigen Lernens und die Erleichterung des Lernprozesses werden überwiegend positiv bewertet.
 
 Ein gemischteres Bild zeigt sich bei den Aussagen zum Prüfungsstress und zur Motivation. Zwar geben einige Studierende an, dass die Lernmaterialien ihren Prüfungsstress reduzieren und die Motivation steigern, jedoch liegen hier auch viele Antworten im mittleren Skalenbereich.
 
 Hinsichtlich des Zeitaufwands und der Arbeitsbelastung zeigen die Ergebnisse, dass ein Teil der Studierenden angibt, durch die Lernmaterialien einen erhöhten Zeitaufwand und eine höhere Arbeitsbelastung zu erleben. Gleichzeitig werden den Materialien jedoch häufig eine gute Struktur, hohe Verständlichkeit sowie eine klare Prüfungsrelevanz zugeschrieben.
+
+\begin{minipage}{\textwidth}
+    \centering
+    \begin{minipage}[t]{0.99\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plots/materials_that_i_use_sorted.pdf}
+        \captionof{figure}{Gestapeltes Balkendiagramm wichtiger Eigenschaften von Lernmaterialien aus Sicht der Studierenden}
+        \label{fig:materials_qualities}
+    \end{minipage}
+\end{minipage}
+
+\vspace{1em}
 
 Zusammenfassend zeigen die Ergebnisse, dass Studierende vor allem Lernmaterialien bevorzugen, die einen direkten Bezug zu Übungen und Prüfungen haben und sie bei der Prüfungsvorbereitung unterstützen. Übungsaufgaben mit Musterlösung und Altklausuren werden besonders häufig genutzt, während andere Materialien eher ergänzend verwendet werden. Die Bewertung der Eigenschaften von Lernmaterialien fällt insgesamt positiv aus, insbesondere in Bezug auf Struktur, Verständlichkeit und Unterstützung des Lernprozesses. Insgesamt unterstreichen die Ergebnisse die Bedeutung praxis- und prüfungsnaher Materialien für das Lernen der Studierenden.
 
@@ -237,39 +242,41 @@ Die Analyse der Zusammenhänge zwischen dem subjektiv eingeschätzten Lernerfolg
 Bei der Interpretation dieser Ergebnisse sind methodische Einschränkungen zu beachten. Die Stichprobe ist nicht repräsentativ für alle Studierenden der Technischen Universität Dortmund. Wegen der Rekrutierung im Umfeld des Mathematikgebäudes gibt es eine Verzerrung zugunsten bestimmter Fakultäten, besonders der Statistik, Mathematik und weiterer natur- und ingenieurwissenschaftlicher Studiengänge. Gleichzeitig sind Studierende in höheren Fachsemestern und Masterstudierende in der Stichprobe unterrepräsentiert. Daher spiegeln die Ergebnisse vor allem die Perspektiven von Bachelorstudierenden in frühen bis mittleren Fachsemestern wider.
 
 Außerdem ist von einem Selektions- und Selbstselektionsbias auszugehen. Nur befragt wurden Studierende, die zum Erhebungszeitpunkt am Campus anwesend und bereit zur Teilnahme waren. Studierende, die überwiegend digital studieren oder weniger Teilnahmebereitschaft zeigen, sind entsprechend unterrepräsentiert. Die Generalisierbarkeit der Ergebnisse ist daher eingeschränkt. Die Befunde sind hauptsächlich für die vorliegende Stichprobe interpretierbar.
-% + na werte
 
-% haben wir die Forschungsfrage beantwortet
+Zusammenfassend liefert die deskriptive Analyse einen Überblick über die von den Studierenden genutzten Lernmaterialien. Die Ergebnisse zeigen, dass vor allem prüfungsrelevante Materialien bevorzugt genutzt werden, während ergänzende Lernmaterialien zur Vertiefung und Erweiterung des Wissens insgesamt nur moderat verwendet werden. Gleichzeitig bewerten die befragten Studierenden die verschiedenen Lernmaterialien überwiegend positiv. Auffällig ist jedoch, dass Aspekte wie die Reduktion von Prüfungsstress oder die Steigerung der Motivation vergleichsweise gering eingeschätzt werden. Trotz der genannten methodischen Einschränkungen liefern diese Befunde erste Hinweise in Bezug auf die Beantwortung der Forschungsfrage.
 
-% was muss gemacht werden damit die forschungsfrage beantwortet wird
-% hier auch unsere einschränkungen
+Aufgrund der Begrenzung der Untersuchung auf eine rein deskriptive Auswertung konnten komplexere Zusammenhänge nicht analysiert werden. Um die Forschung weiterzuführen, wären inferenzstatistische Methoden erforderlich, um tatsächliche Zusammenhänge zwischen Lernerfolg, Prüfungsstress und der Nutzung verschiedener Lernmaterialien systematisch zu untersuchen.
+
+Ein weiterer methodischer Nachteil besteht darin, dass Studierende, die ein bestimmtes Lernmaterial intensiv nutzen, andere Materialien möglicherweise gar nicht verwenden. Dadurch können vergleichende Einschätzungen nur eingeschränkt erfolgen. Für eine differenziertere Beantwortung der Forschungsfrage wäre es daher sinnvoll, gezielt zu erheben, mit welchen Lernmaterialien Studierende nach eigener Einschätzung am effektivsten lernen. Ergänzend könnten objektivere Erfolgsmaße, wie beispielsweise erzielte Prüfungsnoten in Verbindung mit der Nutzung bestimmter Lernmaterialien, erfasst werden.
+
+Trotz dieser Einschränkungen liefern die Ergebnisse dieser Auswertung Pilotbefunde, die erste Einblicke in das Lernverhalten und die Studienrealität der befragten Studierenden ermöglichen.
 
 \section{Reflexion der fragebogengestützten Erhebung}
 
 Rückblickend zeigt die Durchführung der Erhebung mehrere Punkte, die bei einer erneuten Umsetzung verbessert werden sollten. Eine entscheidende Einschränkung ist die Rekrutierung der Teilnehmenden. Durch die Verteilung von QR-Codes am Campus wurden vor allem Studierende erreicht, die sich zum Erhebungszeitpunkt vor Ort aufhielten. Dadurch entsteht, wie bereits erwähnt, ein Selection Bias, da bestimmte Gruppen (z.\,B. Studierende einzelner Fachrichtungen)
 wahrscheinlicher teilnehmen als andere. In unserem Datensatz zeigt sich, dass Studierende aus späteren Semestern sowie Studierende aus Fakultäten außerhalb der MINT-Fächer deutlich unterrepräsentiert sind. Es wäre daher sinnvoll gewesen, eine breitere und systematischere Stichprobengewinnung durchzuführen, beispielsweise durch die Verteilung über mehrere Fakultäten, Lehrveranstaltungen unterschiedlicher Fachbereiche sowie unterschiedliche Zeitfenster.
 
-Auch auf Ebene des Fragebogendesigns gibt es Verbesserungsmöglichkeiten. Der Lernerfolg wurde lediglich über ein einzelnes Item (Zufriedenheit mit dem Lernerfolg) erfasst. Dieses Vorgehen ist zwar praktikabel, reicht jedoch nicht aus, um ein differenziertes Bild des Lernerfolgs zu erhalten. Zukünftig wäre daher ein robusterer Fragebogen sinnvoll, etwa durch die Verwendung mehrerer Items (z.\,B. Verständnis, Zielerreichung, wahrgenommene Kompetenz).
+Auch auf Ebene des Fragebogendesigns gibt es Verbesserungsmöglichkeiten. Der Lernerfolg wurde lediglich über ein einzelnes Item (Zufriedenheit mit dem Lernerfolg) erfasst. Dieses Vorgehen ist zwar praktikabel, reicht jedoch nicht aus, um ein differenziertes Bild des Lernerfolgs zu erhalten. Zukünftig wäre daher ein robusterer Fragebogen sinnvoll, etwa durch die Verwendung mehrerer Items.
 
 Auch die Auswertbarkeit der Daten hätte im Vorfeld stärker an den späteren Auswertungsfragen ausgerichtet werden können. Zwar wurden mit der Nutzungshäufigkeit verschiedener Lernmaterialien, Einstellungen zum Übungsbetrieb sowie einer Selbsteinschätzung des Lernerfolgs wichtige Aspekte erfasst, für klarere Vergleiche hätten jedoch zusätzliche Informationen geholfen. So wäre es hilfreich gewesen, bereits vor der Erhebung festzulegen, welche Variable im Mittelpunkt der Auswertung stehen soll und wie Nutzungskategorien wie selten und häufig zusammengefasst werden. Darüber hinaus hätten zusätzliche Fragen zur Vorlesungsteilnahme, zur aufgewendeten Lernzeit oder zur aktuellen Prüfungsphase die Interpretation der Ergebnisse erleichtert und Vergleiche zwischen verschiedenen Gruppen (z.\,B. nach Semester oder Studiengang) verständlicher gemacht.
 
-Obwohl die Teilnehmenden zu Beginn über Zweck, Freiwilligkeit und Anonymität informiert wurden, hätten diese Hinweise durch eine klarere Hervorhebung (z. B. durch einen eigenen Infoblock oder eine explizite Zustimmung) noch deutlicher kommuniziert werden können. Insgesamt liefert die Erhebung trotz der genannten Einschränkungen einen nützlichen deskriptiven Überblick für die erreichte Stichprobe und gibt einen Hinweis darauf, in welche Richtung das Gesamtbild der Materialnutzung und -wahrnehmung in der befragten Gruppe tendiert. Konkret konnten wir die Zusammensetzung der Stichprobe sowie die Verteilungen zur Materialnutzung und zur Bewertung der Materialien deskriptiv darstellen. Für ein stärkeres Ergebnis und eine höhere Messqualität wären jedoch insbesondere eine breitere Rekrutierung sowie eine robustere Operationalisierung zentraler Items (insbesondere des Lernerfolgs) notwendig.
+Obwohl die Teilnehmenden zu Beginn über Zweck, Freiwilligkeit und Anonymität informiert wurden, hätten diese Hinweise durch eine klarere Hervorhebung (z. B. durch einen eigenen Infoblock oder eine explizite Zustimmung) noch deutlicher kommuniziert werden können. Insgesamt liefert die Erhebung trotz der genannten Einschränkungen einen nützlichen deskriptiven Überblick für die erreichte Stichprobe und gibt einen Hinweis darauf, in welche Richtung das Gesamtbild der Materialnutzung und -wahrnehmung in der befragten Gruppe tendiert. Konkret konnten wir die Zusammensetzung der Stichprobe sowie die Verteilungen zur Materialnutzung und zur Bewertung der Materialien deskriptiv darstellen. Für ein stärkeres Ergebnis und eine höhere Messqualität wären jedoch insbesondere eine breitere Rekrutierung sowie eine robustere Operationalisierung zentraler Items notwendig.
 
 %\section{Literaturverzeichnis}
 %\nocite{*}
-\printbibliography
-\nocite{*}
 
-\newpage
+\clearpage
+\printbibliography
+%\nocite{*}
 
 \appendix
 
 \section{Appendix}
 
-\begin{figure}[htpb]
-    \includegraphics[width=18cm]{plots/barplot_sat_edu_success_correlations.pdf}
-    \caption{Balkendiagramm von spearsmann korrelationen TODO}
-    \label{fig:barplot_sat_edu_success_correlations}
-\end{figure}
+\makebox[\textwidth][c]{%
+    \includegraphics[width=19cm]{plots/barplot_sat_edu_success_correlations.pdf}
+}
+
+\label{fig:barplot_sat_edu_success_correlations}
 
 \end{document}

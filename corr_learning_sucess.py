@@ -67,6 +67,7 @@ plt.title(
 
 plt.gca().invert_yaxis()
 plt.grid(axis="x", alpha=0.3)
+plt.yticks(fontsize=12)
 
 plt.tight_layout()
 plt.savefig(
